@@ -3,8 +3,8 @@
  require 'rubygems'
  require 'bundler/setup'
  Bundler.require
- require './models/User'
- require './models/TodoItem'
+ require './models/Users'
+#require './models/TodoItem'
 
 if ENV['DATABASE_URL']
    ActiveRecord::Base.establish_connection(ENV['DATABASE_URL'])
