@@ -1,9 +1,0 @@
-<h1>Welcome to your gas mileage calculator<h1>
-<h2>Please log in or create an account<h2>
-
-<form action = '/' method = 'post'>
-  <strong>New Task</strong>
-  <input type='text' name ='username' placeholder= 'task content'/>
-  <input type='text' name='password' placeholder ='due date'/>
-  <input type = 'submit' value='Login'>
-</form>

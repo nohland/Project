@@ -3,8 +3,8 @@
  require 'rubygems'
  require 'bundler/setup'
  Bundler.require
-#require './models/User'
-#require './models/TodoItem'
+ require './models/User'
+ require './models/Car'
 
 if ENV['DATABASE_URL']
    ActiveRecord::Base.establish_connection(ENV['DATABASE_URL'])
@@ -17,16 +17,46 @@ else
 end
 
 get '/' do
-
+    @users = Users.all.order(:name)
     erb :welcome
-
 end
 
-post '/' do
-
-
+get '/:user' do
+    @user = Users.find(params[:user])
+    @cars = @user.cars(:car_discription)
+    erb :user_page
 end
 
+post '/new_user' do
+     @user = Users.create(name: params[:username], password: params[:password])
+     redirect '/'
+end
+
+post '/delete_user/:id' do
+    Users.find(params[:id]).destroy
+    redirect '/'
+end
+
+post '/:user/new_car' do
+     Users.find(params[:user]).cars.create(description: params[:car_discription])
+     redirect "/#{params[:user]}"
+end
+
+get '/delete_car/:car' do 
+       @car_discription = Cars.find(params[:car_discription])
+       @user = @car_discription.user
+       @car_discription.destroy   
+       redirect "/#{@user.id}"
+end
+
+
+
+helpers do
+
+  def blank?(x)
+    x.nil? || x == ""
+  end
+end
 
 
 

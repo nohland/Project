@@ -1,0 +1,4 @@
+class AddUserIdToCar < ActiveRecord::Migration
+  def change
+  end
+end

@@ -1,0 +1,22 @@
+<h1>Hello <%=@user.name%> with password:<%=@user.password%></h1>
+<p>
+  <a href="/">back</a>
+</p>
+
+<h2>Enter new car or select car</h2>
+
+<% @cars.each do |car| %>
+
+<ul>
+	<li>
+	<%=car.car_description%> 
+	<form action ='/delete_item/<%=car.id%>' method='get'>
+      	<input type='submit' value='Delete'>
+      	</form>
+	</li>
+</ul>
+
+<form action = '/<%=@user.id%>/new_car' method = 'post'>
+  <input type='text' car_discription ='car' placeholder= 'your car here'/>
+  <input type = 'submit' value='Submit'>
+</form>

@@ -1,0 +1,22 @@
+<h1>Hello <%=@user.name%></h1>
+<p>
+  <a href="/">back</a>
+</p>
+
+<h2>Enter new car or select car</h2>
+
+<% @cars.order(:car_description).each do |car| %>
+
+<ul>
+	<li>
+	<%=car.car_description%> 
+	<form action ='/delete_car/<%=car.id%>' method='get'>
+      	<input type='submit' value='Delete'>
+      	</form>
+	</li>
+</ul>
+<%end%>
+<form action = '/<%=@user.id%>/new_car' method = 'post'>
+  <input type='text' name ='car' placeholder= 'your car here'/>
+  <input type = 'submit' value='Submit'>
+</form>
