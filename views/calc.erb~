@@ -1,0 +1,24 @@
+<h1><%=@car.car_description%></h1>
+
+<% @description.order(:date).each do |car| %>
+
+<ul>
+        <li>
+        date: <%=car.date%> 
+	miles since last fill: <%=car.miles%>
+	price per gallon: <%=car.ppg%>
+        <form action ='/delete_description/<%=car.id%>' method='get'>
+        <input type='submit' value='Delete'>
+        </form>
+        </li>
+</ul>
+<%end%>
+
+<form action = '/<%=@car.id/new_calc' method = 'post'>
+  <input type='text' name ='miles' placeholder= 'miles'/>
+  <input type='text' name ='gallons' placeholder= 'amount filled'/>
+  <input type='text' name ='ppg' placeholder= 'price per gallon'/>
+  <input type='text' name ='date' placeholder= 'date'/>
+  <input type = 'submit' value='Submit'>
+</form>
+

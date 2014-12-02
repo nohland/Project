@@ -1,22 +1,27 @@
-<h1>Hello <%=@user.name%> with password:<%=@user.password%></h1>
-<p>
-  <a href="/">back</a>
-</p>
+<h1>Hello <%=@user.name%></h1>
+
 
 <h2>Enter new car or select car</h2>
 
-<% @cars.each do |car| %>
+<% @cars.order(:car_description).each do |car| %>
 
 <ul>
 	<li>
-	<%=car.car_description%> 
-	<form action ='/delete_item/<%=car.id%>' method='get'>
+	<div class = 'list-group-item'>
+	     <a	href='/<%=car.id%>'><%=car.car_description%></a>
+        </div> 
+	<form action ='/delete_car/<%=car.id%>' method='get'>
       	<input type='submit' value='Delete'>
       	</form>
 	</li>
 </ul>
-
-<form action = '/<%=@user.id%>/new_car' method = 'post'>
-  <input type='text' car_discription ='car' placeholder= 'your car here'/>
+<%end%>
+<form action = '/new_car' method = 'post'>
+  <input type='text' name ='car' placeholder= 'your car here'/>
   <input type = 'submit' value='Submit'>
 </form>
+
+<p>
+ <a href='/logout' class="btn btn-default">logout</a>
+ <a href="/delete_user" class="btn btn-dnager">delete my account</a>
+</p>

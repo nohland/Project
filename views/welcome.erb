@@ -1,24 +1,17 @@
 <h1>Welcome to your gas mileage calculator<h1>
-<h2>Please log in or create an account<h2>
+<h2>Please log in<h2>
 
-<% @users.each do |user| %>
+<form action = '/login' method = 'post'>
+      <input type='text' name='name' placeholder='username' />
+      <input type='password' name='password' placeholder='password' />
+      <button type='submit' class ="btn btn-primary">Login</button>
+</form>
+<h2> Or create an account </h2>
 
-<ul>
-        <li>
-       
-	<div class = 'list-group-item'>
-            <a href='/<%=user.id%>'><%=user.name%></a>
-        </div>
-
-        <form action ='/delete_user/<%=user.id%>' method='Post'>
-        <input type='submit' value='Delete'>
-        </form>
-        </li>
-</ul>
-<%end%>
 
 <form action = '/new_user' method = 'post'>
   <input type='text' name ='name' placeholder= 'username'/>
-  <input type='text' passoword ='password' placeholder ='password'/>
-  <input type = 'submit' value='Login'>
+  <input type ='password' name ='password' placeholder ='password'/>
+  <input type ='password' name='password_confirmation' placeholder='password confirmation'>
+  <button type='submit' class="btn btn-primary">Register</button>
 </form>

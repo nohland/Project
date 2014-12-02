@@ -1,8 +1,15 @@
 <h1>Welcome to your gas mileage calculator<h1>
 <h2>Please log in or create an account<h2>
 
-<form action = '/' method = 'post'>
-  <input type='text' name ='username' placeholder= 'username'/>
-  <input type='text' name='password' placeholder ='password'/>
-  <input type = 'submit' value='Login'>
+<form action='/login' method='post'>
+      <input class="form-control" type='text' name='name' placeholder='username' />
+      <input class="form-control" type="password" name="password" placeholder="password" />
+      <button type='submit' class ="btn btn-primary">Login</button>
+</form>
+
+<form action = '/new_user' method = 'post'>
+  <input class='form-control' type='text' name ='name' placeholder= 'username'/>
+  <input class='from-control' type ='password' passoword ='password' placeholder ='password'/>
+  <input class='form-control' type ='password' name='password_confitmation' placeholder="password confirmation'>
+  <button type='submit' class="btn btn-primary">Register</button>
 </form>

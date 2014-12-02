@@ -1,7 +1,5 @@
 <h1>Hello <%=@user.name%></h1>
-<p>
-  <a href="/">back</a>
-</p>
+
 
 <h2>Enter new car or select car</h2>
 
@@ -9,14 +7,22 @@
 
 <ul>
 	<li>
-	<%=car.car_description%> 
+	<div class = 'list-group-item'>
+	     <a	href='/<%=car.id%>'><%=car.car_description%></a>
+        </div> 
 	<form action ='/delete_car/<%=car.id%>' method='get'>
       	<input type='submit' value='Delete'>
       	</form>
 	</li>
 </ul>
 <%end%>
-<form action = '/<%=@user.id%>/new_car' method = 'post'>
+<form action = '/new_car' method = 'post'>
   <input type='text' name ='car' placeholder= 'your car here'/>
   <input type = 'submit' value='Submit'>
 </form>
+
+<p>
+ <a href='/logout' class="btn btn-default">logout</a>
+ <a href='/delete_user' class="btn btn-dnager">delete my account</a>
+</p>
+
