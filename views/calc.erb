@@ -3,26 +3,26 @@
   <a href="/">back</a>
 </p>
 <% @description.order(:date).each do |item| %>
-
 <ul>
-        <li>
-	<ul>
-		<li>date: <%=item.date%> </li>
-		<li>miles since last fill: <%=item.miles%></li>
-		<li>price per gallon: $<%=item.ppg%></li>
-		<li>gallons: <%=item.gallons%></li>
-		<li>mileage: <%=item.mileage %></li>
-		<li>total price: $<%=item.t_price%></li>
-	</ul>
+	
+		date: <%=item.date%> 
+		miles since last fill: <%=item.miles%>
+		price per gallon: $<%=item.ppg%>
+		gallons: <%=item.gallons%>
+		mileage: <%=item.mileage %>
+		total price: $<%=item.t_price%>
+	
+</ul>
         <form action ='/delete_description/<%=item.id%>' method='get'>
         <input type='submit' value='Delete'>
         </form>
-        </li>
-</ul>
+        
+
 
 <%end%>
-Average mileage <%=@avg%> 
-<form action = '/<%=@car.id%>/new_calc' method = 'post'>
+Average mileage <%=@car.mil_avg%> <%=@avg_ex%>
+<br><%= @car.calcs.count %> 
+<form action = '/<%=@car.id%>/<%=@user.id%>/new_calc' method = 'post'>
   <input type='text' name ='miles' placeholder= 'miles'/>
   <input type='text' name ='gallons' placeholder= 'amount filled'/>
   <input type='text' name ='ppg' placeholder= 'price per gallon'/>
@@ -30,4 +30,4 @@ Average mileage <%=@avg%>
   <input type = 'submit' value='Submit'>
 </form>
 
-
+<a href="/<%=@car.id%>/chart"> chart</a>

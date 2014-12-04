@@ -1,0 +1,24 @@
+<html>
+<head>
+	<title>Chart</title>
+	<script src='Chart.js'></script>
+</head>
+
+<body>
+	<canvas id="average_mileage" width"=400" height="400"></canvas>
+	<script>
+		var data = {
+		    labels : ["1","2","3","4","5","6"],
+		    datasets : [
+		    	     {
+				fillColor : "rgba(73,188,170,0.4)",
+                        	strokeColor : "rgba(72,174,209,0.4)",
+                        	data : [364,504,605,400,345,320]
+			     }
+		    ]
+		 };
+		var average = document.getElementById("average_mileage").getContext("2d");
+    		new Chart(average).Bar(data);
+	</script>
+</body>
+</html>

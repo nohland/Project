@@ -8,7 +8,7 @@
 <ul>
 	<li>
 	<div class = 'list-group-item'>
-	     <a	href='/<%=car.id%>'><%=car.car_description%></a>
+	     <a	href= '/show_car/<%=car.id%>/<%=@user.id%>'> <%=car.car_description%></a> <%=car.mil_avg%> Ovarall MPG
         </div> 
 	<form action ='/delete_car/<%=car.id%>' method='get'>
       	<input type='submit' value='Delete'>

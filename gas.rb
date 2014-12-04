@@ -29,7 +29,7 @@ get '/' do
     if @user
        @cars = @user.cars.order(:car_description)
        #@car = Car.find(params[:car])
-       #avg_price = @car.calcs.avg(:t_price)
+       
        #User.find(params[:user]).cars.create(avg_fill_price: avg_price)
        erb :user_page
     else 
@@ -57,11 +57,12 @@ get '/logout' do
     redirect '/'
 end
 
-get '/:car' do
+get '/show_car/:car/:user' do
     @car = Car.find(params[:car])
+    @user = User.find(params[:user])
     @description = @car.calcs.order(:date)
-    @avg = User.find(params[:car])
-      
+    #@avg = @user.cars.find(:mil_avg)
+    #@avg = @user.cars.  
     erb :calc
 end
 
@@ -69,17 +70,22 @@ get '/delete_description/:item' do
     @des = Calc.find(params[:item])
     @user_car = @des.car
     @des.destroy
-    redirect "/#{@user_car.id}"
+    redirect "show_car/#{@user_car.id}/#{@user.id}"
 end
 
-post '/:car/new_calc' do
+post '/:car/:user/new_calc' do
      
      t_price = params[:gallons].to_f*params[:ppg].to_f
      mileage = params[:miles].to_f/params[:gallons].to_f
-     @avg = Car.find(params[:car]).calcs.average(:mileage)
+     @car = Car.find(params[:car])
+     
+     
+     
      Car.find(params[:car]).calcs.create(miles: params[:miles], gallons: params[:gallons], ppg: params[:ppg], date: params[:date],mileage: mileage,t_price: t_price)
-     User.find(params[:car]).cars.create(mil_avg: @avg)
-     redirect "/#{params[:car]}"
+     @avg_ex = @car.calcs.average(:mileage)
+     @car.update(mil_avg: @avg_ex)
+     
+     redirect "show_car/#{params[:car]}/#{params[:user]}"
 end
 
 post '/new_user' do
@@ -93,6 +99,9 @@ post '/new_user' do
   end
 end
 
+get '/:car/chart' do
+    erb :my_chart
+end
 
 post '/new_car' do
      @user.cars.create(car_description: params[:car])
