@@ -1,5 +1,28 @@
 body{
 text-align: center;
-background-color: green;
+background-color: #CC3300;
 
+#border:10px solid mediumblue;
+padding:100px;
+
+}
+
+.car{
+text-align: left;
+background-color: #BFD9FF;
+border:1px solid mediumblue;
+padding:5px;
+margin:30px;
+
+}
+.date{
+text-align: left;
+background-color: #BFD9FF;
+}
+
+.avg{
+font-size: 200%;
+text-align: center;
+background-color: #FF66CC;
+border:1px solid mediumblue;
 }

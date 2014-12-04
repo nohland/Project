@@ -3,14 +3,16 @@
   <a href="/">back</a>
 </p>
 <% @description.order(:date).each do |item| %>
-<ul>
+<ul class="car">
 	
-		date: <%=item.date%> 
-		miles since last fill: <%=item.miles%>
-		price per gallon: $<%=item.ppg%>
-		gallons: <%=item.gallons%>
-		mileage: <%=item.mileage %>
-		total price: $<%=item.t_price%>
+		<li class="date"> date: <%=item.date%>  
+		<ul>miles since last fill: <%=item.miles%></ul>
+		<ul>price per gallon: $<%=item.ppg%></ul>
+		<ul>gallons: <%=item.gallons%></ul>
+		<ul>mileage: <%=item.mileage %></ul>
+		<ul>total price: $<%=item.t_price%></ul>
+
+</li>
 	
 </ul>
         <form action ='/delete_description/<%=item.id%>' method='get'>
@@ -20,7 +22,9 @@
 
 
 <%end%>
+<ul class="avg">
 Average mileage <%=@car.mil_avg%> <%=@avg_ex%>
+</ul>
 <br><%= @car.calcs.count %> 
 <form action = '/<%=@car.id%>/<%=@user.id%>/new_calc' method = 'post'>
   <input type='text' name ='miles' placeholder= 'miles'/>

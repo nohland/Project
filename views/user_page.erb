@@ -5,10 +5,12 @@
 
 <% @cars.order(:car_description).each do |car| %>
 
-<ul>
+
+<ul class="car">
+
 	<li>
 	<div class = 'list-group-item'>
-	     <a	href= '/show_car/<%=car.id%>/<%=@user.id%>'> <%=car.car_description%></a> <%=car.mil_avg%> Ovarall MPG
+	     <a	href= '/show_car/<%=car.id%>/<%=@user.id%>'> <%=car.car_description%></a> Ovarall MPG: <%=car.mil_avg%>
         </div> 
 	<form action ='/delete_car/<%=car.id%>' method='get'>
       	<input type='submit' value='Delete'>
